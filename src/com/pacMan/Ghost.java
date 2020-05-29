@@ -41,7 +41,9 @@ public class Ghost extends  Game implements  Runnable{
     }
 
     public void kill(){
-        if(pac.getxAxis() == Star[ghost_x] && pac.getyAxis() == Star[ghost_y]){
+        Rectangle pacRect = new Rectangle(pac.getxAxis(), pac.getyAxis(), 100, 100);
+        Rectangle ghostRect = new Rectangle(Star[ghost_x], Star[ghost_y], 150, 150);
+        if(ghostRect.contains(pacRect)){
             JOptionPane.showMessageDialog(null,"You died!");
             System.exit(0);
         }
@@ -65,12 +67,14 @@ public class Ghost extends  Game implements  Runnable{
                         ghost_x += 1;
                         setXAxis(Star[ghost_x]);
                         pos = 6;
-                        System.out.println(ghost_x);
+                        kill();
                     } else if (pos == 4) {
                         ghost_x -= 1;
                         setXAxis(Star[ghost_x]);
                         pos = 4;
+                        kill();
                     }
+                    kill();
                 } else if (tabOfGhostPos[ghost_y + 1][ghost_x] == 1 && tabOfGhostPos[ghost_y - 1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x - 1] == 0 && tabOfGhostPos[ghost_y][ghost_x + 1] == 0) {
                     if (pos == 4) {
@@ -79,10 +83,12 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         } else {
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                     }
                     else if(pos == 6){
@@ -91,10 +97,12 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         } else {
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                     }
                     else if(pos == 2){
@@ -103,12 +111,15 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         } else {
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                     }
+                    kill();
                 } else if (tabOfGhostPos[ghost_y - 1][ghost_x] == 1 && tabOfGhostPos[ghost_y + 1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x - 1] == 0 && tabOfGhostPos[ghost_y][ghost_x + 1] == 0) {
                     if (pos == 6) {
@@ -117,10 +128,12 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         } else {
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                     }
                     else if(pos == 8){
@@ -129,11 +142,13 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
                     }
                     else if(pos == 4){
@@ -142,25 +157,30 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
                     }
+                    kill();
                 } else if (tabOfGhostPos[ghost_y - 1][ghost_x] == 0 && tabOfGhostPos[ghost_y + 1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x - 1] == 1 && tabOfGhostPos[ghost_y][ghost_x + 1] == 1) {
                     if (pos == 2) {
                         ghost_y += 1;
                         setYAxis(Star[ghost_y]);
-
                         pos = 2;
+                        kill();
                     } else {
                         ghost_y -= 1;
                         setYAxis(Star[ghost_y]);
                         pos = 8;
+                        kill();
                     }
+                    kill();
                 }else if(tabOfGhostPos[ghost_y-1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                             tabOfGhostPos[ghost_y][ghost_x-1] == 1 && tabOfGhostPos[ghost_y][ghost_x+1] == 0){
                     if(pos == 8){
@@ -169,11 +189,13 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                         else{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                     }
                     else if(pos == 2){
@@ -182,11 +204,13 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                     }
                     else if(pos == 4){
@@ -195,14 +219,18 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                     }
+                    kill();
                 }
+                kill();
             }else if (ghost_y<6 && ghost_x == 6 && ghost_y > 0){
                 if (tabOfGhostPos[ghost_y - 1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x - 1] == 0 ) {
@@ -213,11 +241,13 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                         else{
                             ghost_y +=1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                     }
                     else if(pos == 8){
@@ -226,11 +256,13 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
                     }
                     else if(pos == 2){
@@ -239,13 +271,16 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
                     }
+                    kill();
                 }
                 else if(tabOfGhostPos[ghost_y-1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                             tabOfGhostPos[ghost_y][ghost_x-1] == 1 ){
@@ -253,13 +288,16 @@ public class Ghost extends  Game implements  Runnable{
                         ghost_y -= 1;
                         setYAxis(Star[ghost_y]);
                         pos = 8;
+                        kill();
                     }
                     else if(pos == 2){
                         ghost_y += 1;
                         setYAxis(Star[ghost_y]);
                         pos = 2;
+                        kill();
                     }
                 }
+                kill();
             }
             else if (ghost_x <6 && ghost_y == 6 && ghost_x>0){
                 if(tabOfGhostPos[ghost_y - 1][ghost_x] == 0 && tabOfGhostPos[ghost_y][ghost_x - 1] == 0 &&
@@ -270,34 +308,44 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         } else {
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
+                        kill();
                     } else if (pos == 4) {
                         random = new Random();
                         if (random.nextInt() % 2 == 0) {
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         } else {
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
+                        kill();
                     } else if (pos == 6) {
                         random = new Random();
                         if (random.nextInt() % 2 == 0) {
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         } else {
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
+                        kill();
                     }
+                    kill();
                 }
                 else if(tabOfGhostPos[ghost_y][ghost_x-1] == 0 && tabOfGhostPos[ghost_y][ghost_x+1] == 0 &&
                             tabOfGhostPos[ghost_y-1][ghost_x] == 1){
@@ -305,14 +353,17 @@ public class Ghost extends  Game implements  Runnable{
                         ghost_x -= 1;
                         setXAxis(Star[ghost_x]);
                         pos = 4;
-                        System.out.println(ghost_x);
+                        kill();
                     }
                     else{
                         ghost_x += 1;
                         setXAxis(Star[ghost_x]);
                         pos = 6;
+                        kill();
                     }
+                    kill();
                 }
+                kill();
             }
             else if(ghost_y == 6 && ghost_x == 6 && tabOfGhostPos[ghost_y-1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x-1] == 0){
@@ -320,12 +371,15 @@ public class Ghost extends  Game implements  Runnable{
                     ghost_x -= 1;
                     setXAxis(Star[ghost_x]);
                     pos = 4;
+                    kill();
                 }
                 else{
                     ghost_y -= 1;
                     setYAxis(Star[ghost_y]);
                     pos = 8;
+                    kill();
                 }
+                kill();
             }
             else if(ghost_y == 6  && ghost_x == 0 && tabOfGhostPos[ghost_y-1][ghost_x] == 0 &&
                     tabOfGhostPos[ghost_y][ghost_x+1] == 0){
@@ -333,12 +387,15 @@ public class Ghost extends  Game implements  Runnable{
                     ghost_y -= 1;
                     setYAxis(Star[ghost_y]);
                     pos = 8;
+                    kill();
                 }
                 else{
                     ghost_x += 1;
                     setXAxis(Star[ghost_x]);
                     pos = 6;
+                    kill();
                 }
+                kill();
             }
             else if(ghost_x==0 && ghost_y > 0){
                 if(tabOfGhostPos[ghost_y-1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
@@ -347,12 +404,15 @@ public class Ghost extends  Game implements  Runnable{
                         ghost_y -= 1;
                         setYAxis(Star[ghost_y]);
                         pos = 8;
+                        kill();
                     }
                     else{
                         ghost_y += 1;
                         setYAxis(Star[ghost_y]);
                         pos = 2;
+                        kill();
                     }
+                    kill();
                 }
                 else if(tabOfGhostPos[ghost_y-1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x+1] == 0){
@@ -362,12 +422,15 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
                         else{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
+                        kill();
                     }
                     else if(pos == 2){
                         random = new Random();
@@ -375,12 +438,15 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
+                        kill();
                     }
                     else if(pos == 4){
                         random = new Random();
@@ -388,14 +454,18 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_y -= 1;
                             setYAxis(Star[ghost_y]);
                             pos = 8;
+                            kill();
                         }
+                        kill();
                     }
                 }
+                kill();
             }
             else if(ghost_x == 6 && ghost_y == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x-1] == 0){
@@ -403,12 +473,15 @@ public class Ghost extends  Game implements  Runnable{
                     ghost_x -= 1;
                     setXAxis(Star[ghost_x]);
                     pos = 4;
+                    kill();
                 }
                 else if(pos == 6){
                     ghost_y += 1;
                     setYAxis(Star[ghost_y]);
                     pos = 2;
+                    kill();
                 }
+                kill();
             }
             else if(ghost_y == 0 && ghost_x > 0){
                 if(tabOfGhostPos[ghost_y+1][ghost_x] == 1 && tabOfGhostPos[ghost_y][ghost_x+1] == 0 &&
@@ -417,12 +490,15 @@ public class Ghost extends  Game implements  Runnable{
                         ghost_x -= 1;
                         setXAxis(Star[ghost_x]);
                         pos = 4;
+                        kill();
                     }
                     else if(pos == 6){
                         ghost_x += 1;
                         setXAxis(Star[ghost_x]);
                         pos = 6;
+                        kill();
                     }
+                    kill();
                 }
                 else if(tabOfGhostPos[ghost_y+1][ghost_x] == 0 && tabOfGhostPos[ghost_y][ghost_x+1] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x-1] == 0){
@@ -432,12 +508,15 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
+                        kill();
                     }
                     else if(pos == 8){
                         random = new Random();
@@ -445,12 +524,15 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
                         else{
                             ghost_x -= 1;
                             setXAxis(Star[ghost_x]);
                             pos = 4;
+                            kill();
                         }
+                        kill();
                     }
                     else if(pos == 6){
                         random = new Random();
@@ -458,14 +540,18 @@ public class Ghost extends  Game implements  Runnable{
                             ghost_y += 1;
                             setYAxis(Star[ghost_y]);
                             pos = 2;
+                            kill();
                         }
                         else{
                             ghost_x += 1;
                             setXAxis(Star[ghost_x]);
                             pos = 6;
+                            kill();
                         }
+                        kill();
                     }
                 }
+                kill();
             }
             else if(ghost_x == 0 && ghost_y == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x+1] == 0){
@@ -473,12 +559,15 @@ public class Ghost extends  Game implements  Runnable{
                     ghost_y += 1;
                     setYAxis(Star[ghost_y]);
                     pos = 2;
+                    kill();
                 }
                 else if(pos == 8){
                     ghost_x += 1;
                     setXAxis(Star[ghost_x]);
                     pos = 6;
+                    kill();
                 }
+                kill();
             }
             kill();
             board.repaint();
