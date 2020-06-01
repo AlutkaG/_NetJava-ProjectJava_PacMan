@@ -13,7 +13,6 @@ import java.io.InputStream;
 public class PacMan extends JFrame{
     private JPanel startWindow;
     private JButton start;
-    private JButton options;
     private JButton exit;
 
     public PacMan(){
@@ -28,20 +27,11 @@ public class PacMan extends JFrame{
             }
         });
 
-        options.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Options opt = new Options();
-                opt.Opt();
 
-            }
-        });
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Board b=new Board();
-                //run.main();
-
             }
         });
     }
