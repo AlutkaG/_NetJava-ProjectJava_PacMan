@@ -9,6 +9,7 @@ public class KeyEvents implements KeyListener {
     private Board board;
     private int speed = 3;
     private int score =0;
+    private int pom_score = score;
     private int x = 16;
     private int y = 16;
     private int i = 0;
@@ -52,8 +53,6 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
-            this.score = pac.score(this.score,pac);
-            System.out.print(score);
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_RIGHT){
@@ -69,8 +68,6 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
-            this.score = pac.score(this.score,pac);
-            System.out.print(score);
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_UP){
@@ -85,8 +82,6 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
-            this.score = pac.score(this.score,pac);
-            System.out.print(score);
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_DOWN){
@@ -102,10 +97,11 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
-            this.score = pac.score(this.score,pac);
-            System.out.print(score);
             board.repaint();
         }
+        this.score = pac.score(this.score,pac);
+        board.setScore(this.score);
+        System.out.println(this.score);
     }
 
     @Override

@@ -116,6 +116,7 @@ public class Game{
                         score++;
                         tabScore[i][j]=1;
                         win++;
+
                         if(win == 35){
                             JOptionPane.showMessageDialog(null,"You win!");
                             System.exit(0);

@@ -41,8 +41,8 @@ public class Ghost extends  Game implements  Runnable{
     }
 
     public void kill(){
-        Rectangle pacRect = new Rectangle(pac.getxAxis(), pac.getyAxis(), 100, 100);
-        Rectangle ghostRect = new Rectangle(Star[ghost_x], Star[ghost_y], 150, 150);
+        Rectangle pacRect = new Rectangle(pac.getxAxis(), pac.getyAxis(), 50, 50);
+        Rectangle ghostRect = new Rectangle(Star[ghost_x], Star[ghost_y], 100, 100);
         if(ghostRect.contains(pacRect)){
             JOptionPane.showMessageDialog(null,"You died!");
             System.exit(0);
@@ -234,7 +234,6 @@ public class Ghost extends  Game implements  Runnable{
             }else if (ghost_y<6 && ghost_x == 6 && ghost_y > 0){
                 if (tabOfGhostPos[ghost_y - 1][ghost_x] == 0 && tabOfGhostPos[ghost_y+1][ghost_x] == 0 &&
                         tabOfGhostPos[ghost_y][ghost_x - 1] == 0 ) {
-                    System.out.println("x=6");
                     if(pos == 6){
                         random = new Random();
                         if(random.nextInt() % 2 == 0){

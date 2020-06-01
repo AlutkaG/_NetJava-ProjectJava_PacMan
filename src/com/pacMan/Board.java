@@ -11,7 +11,8 @@ public class Board extends JPanel{
     public int widthOfBoard = 370;
     public int heightOfBoard = 450;
     private int BLOCK_SIZE = 50;
-
+    private int score =0;
+    KeyEvents key;
     private int tab[][]={
             {0,0,0,0,0,0,0},
             {0,1,0,1,1,1,0},
@@ -27,6 +28,7 @@ public class Board extends JPanel{
     };
 
     JFrame window = new JFrame("Pacman");
+    static JLabel l;
     Game pac = new Game(16,16,"images//pacman1.png", true);
     KeyEvents keyEvents = new KeyEvents(pac,this);
     Ghost ghost1 = new Ghost(XAXIS_OF_GHOST,YAXIS_OF_GHOST,"images//ghost.png",true, this, pac);
@@ -44,14 +46,19 @@ public class Board extends JPanel{
         window.setVisible(true);
     }
 
+    public void setScore(int sc){
+        this.score = sc;
 
+    }
     public void paint(Graphics g2d){
         ImageIcon imageIcon = new ImageIcon("images//back.png");
         g2d.drawImage(imageIcon.getImage(),0,0,null);
         drawMaze(g2d);
         pac.drawPacman(g2d);
         ghost1.drawPacman(g2d);
-
+        g2d.setColor(Color.GREEN);
+        g2d.setFont(new Font("monospaced", Font.PLAIN, 30));
+        g2d.drawString("Score: "+score, 110, 380);
     }
 
     private void drawMaze(Graphics g2d) {
@@ -95,5 +102,6 @@ public class Board extends JPanel{
                 }
             }
         }
+
     }
 }
