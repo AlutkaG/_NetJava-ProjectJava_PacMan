@@ -12,11 +12,16 @@ public class Game{
     private int score=0;
     private int win=0;
     Board board;
+    private int winScore = 0;
+
+
 
     private int Star[] ={
             16, 64, 118, 166, 217, 268, 316
 
     };
+
+    private int pacPos[] ={16,16};
 
     private int tabScore[][]={
         {1,0,0,0,0,0,0},
@@ -38,7 +43,9 @@ public class Game{
             {0,0,0,0,0,0,0}
     };
 
-    public Game(int xAxis, int yAxis, String imagePath, boolean isAlive){
+
+    public Game(int xAxis, int yAxis, String imagePath, boolean isAlive, Board board){
+        this.board = board;
         setXAxis(xAxis);
         setYAxis(yAxis);
         setImagePath(imagePath);
@@ -110,14 +117,16 @@ public class Game{
     }
 
     public int score(int score,Game pac){
+        winScore = board.winScore;
+        System.out.println(winScore);
         for(int i=0; i<7; i++){
                 for(int j=0; j<7; j++){
                     if(pac.getxAxis()==Star[j] && pac.getyAxis()==Star[i] && tabScore[i][j]==0){
                         score++;
                         tabScore[i][j]=1;
                         win++;
-
-                        if(win == 35){
+                        //System.out.println(board.winScore);
+                        if(win == winScore-1){
                             JOptionPane.showMessageDialog(null,"You win!");
                             System.exit(0);
                         }

@@ -2,6 +2,7 @@ package com.pacMan;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 public class KeyEvents implements KeyListener {
 
@@ -15,24 +16,18 @@ public class KeyEvents implements KeyListener {
     private int i = 0;
     private int j = 0;
 
+    //public int tab[][]= new int[board.getTabStartDraw().length][];
+
     private int Star[] ={
             16, 64, 118, 166, 217, 268, 316
     };
-
-    private int tab[][]={
-            {0,0,0,0,0,0,0},
-            {0,1,0,1,1,1,0},
-            {0,1,0,0,0,0,0},
-            {0,1,0,1,1,1,0},
-            {0,0,0,0,0,0,0},
-            {0,1,1,1,0,1,0},
-            {0,0,0,0,0,0,0}
-    };
+    
 
     public KeyEvents(Game pac, Board board){
         this.board = board;
         this.pac = pac;
     }
+
 
     @Override
     public void keyTyped(KeyEvent e){
@@ -43,7 +38,7 @@ public class KeyEvents implements KeyListener {
         if(keyEvent.getKeyCode() == KeyEvent.VK_LEFT){
             if(i > 0){
                 this.i -= 1;
-                if(tab[j][i] == 0){
+                if(board.getTabStartDraw()[j][i] == 0){
                     x = Star[this.i];
                     y = Star[this.j];
                 }
@@ -53,12 +48,13 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
+            pac.setImagePath("images//pacmanL.png");
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_RIGHT){
             if(i < 6){
                 this.i += 1;
-                if(tab[j][i] == 0){
+                if(board.getTabStartDraw()[j][i] == 0){
                     x = Star[this.i];
                     y = Star[this.j];
                 }
@@ -68,12 +64,13 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
+            pac.setImagePath("images//pacmanR.png");
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_UP){
             if(j > 0 && j<=6) {
                 this.j -= 1;
-                if (tab[j][i] == 0) {
+                if (board.getTabStartDraw()[j][i] == 0) {
                     x = Star[this.i];
                     y = Star[this.j];
                 } else {
@@ -82,12 +79,13 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
+            pac.setImagePath("images//pacmanU.png");
             board.repaint();
         }
         else if(keyEvent.getKeyCode() == KeyEvent.VK_DOWN){
             if(j < 6 && j>=0){
                 this.j += 1;
-                if(tab[j][i] == 0){
+                if(board.getTabStartDraw()[j][i] == 0){
                     x = Star[this.i];
                     y = Star[this.j];
                 }
@@ -97,6 +95,7 @@ public class KeyEvents implements KeyListener {
             }
             pac.setXAxis(x);
             pac.setYAxis(y);
+            pac.setImagePath("images//pacmanD.png");
             board.repaint();
         }
         this.score = pac.score(this.score,pac);
